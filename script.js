@@ -11,32 +11,29 @@ const winPatterns = [
   [0,4,8],[2,4,6]          // Diagonals
 ];
 
-document.getElementById("submit").addEventListener("click", () => {
-  player1 = document.getElementById("player1").value.trim();
-player2 = document.getElementById("player2").value.trim();
+document.getElementById("submit").addEventListener("click", function () {
+  const player1 = document.getElementById("player1").value.trim();
+  const player2 = document.getElementById("player2").value.trim();
 
+  if (!player1 || !player2) return;
 
-  if (player1 && player2) {
-    document.getElementById("setup").style.display = "none";
-    document.getElementById("game").style.display = "block";
-    currentPlayer = player1;
-    document.querySelector(".message").textContent = `${currentPlayer}, you're up`;
-  }
-});
+  // Hide input fields, show game board
+  document.getElementById("game").style.display = "block";
+  document.getElementById("submit").style.display = "none";
+  document.getElementById("player1").style.display = "none";
+  document.getElementById("player2").style.display = "none";
 
-document.querySelectorAll(".cell").forEach((cell, index) => {
-  cell.addEventListener("click", () => {
-    if (cell.textContent || checkWinner()) return;
+  // Set initial message
+  currentPlayer = 'x';
+  currentName = player1;
+  otherName = player2;
+  document.querySelector(".message").textContent = `${currentName}, you're up`;
 
-    board[index] = currentSymbol;
-    cell.textContent = currentSymbol;
-
-    if (checkWinner()) {
-      document.querySelector(".message").textContent = `${currentPlayer}, congratulations you won!`;
-    } else {
-      switchPlayer();
-    }
-  });
+  // Store for later use
+  window.ticTacToe = {
+    players: { x: player1, o: player2 },
+    current: 'x'
+  };
 });
 
 function switchPlayer() {
