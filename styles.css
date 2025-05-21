@@ -1,1 +1,47 @@
 /*  your css code here. If applicable */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  width: 300px;
+  margin: auto;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+  margin-top: 20px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: #f2f2f2;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #ccc;
+}
+
+.message {
+  font-size: 20px;
+  margin: 10px 0;
+  height: 30px;
+}
